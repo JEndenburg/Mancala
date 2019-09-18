@@ -3,6 +3,8 @@ package nl.sogyo.mancala.domain;
 public abstract class BaseBowl 
 {
 	private int stones;
+	private BaseBowl neighbour;
+	private Player player;
 	
 	protected void pass(int stones)
 	{
