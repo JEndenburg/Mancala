@@ -1,4 +1,4 @@
-package nl.sogyo.mancala.domain;
+package nl.sogyo.mancala.domain.tests;
 
 import org.junit.Assert;
 import org.junit.Test;
