@@ -2,13 +2,23 @@ package nl.sogyo.mancala.domain;
 
 public abstract class BaseBowl 
 {
-	private int stones;
-	private BaseBowl neighbour;
-	private Player player;
+	protected int stones = 4;
+	protected BaseBowl neighbour;
+	protected Player player;
+	
+	public int getStones() { return stones; }
+	
+	public BaseBowl(int stones, BaseBowl neighbour)
+	{
+		this.stones = stones;
+		this.neighbour = neighbour;
+	}
 	
 	protected void pass(int stones)
 	{
-		//TODO Implement
+		this.stones++;
+		if(stones > 1)
+			neighbour.pass(stones - 1);
 	}
 	
 	protected Kalaha getKalaha()

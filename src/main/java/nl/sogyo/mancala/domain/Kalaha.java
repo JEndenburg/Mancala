@@ -2,6 +2,11 @@ package nl.sogyo.mancala.domain;
 
 public class Kalaha extends BaseBowl 
 {
+	public Kalaha(BaseBowl neighbour) 
+	{
+		super(0, neighbour);
+	}
+
 	@Override
 	protected void pass(int stones)
 	{
