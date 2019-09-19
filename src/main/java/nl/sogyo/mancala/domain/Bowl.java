@@ -19,6 +19,9 @@ public class Bowl extends BaseBowl
 
 	public void play()
 	{
+		if(!player.getIsMyTurn())
+			throw new InvalidPlayException("You can't play when it's not your turn!");
+		
 		int stonesToPass = this.stones;
 		this.stones = 0;
 		neighbour.pass(stonesToPass);

@@ -4,6 +4,7 @@ import org.junit.*;
 
 import nl.sogyo.mancala.domain.BaseBowl;
 import nl.sogyo.mancala.domain.Bowl;
+import nl.sogyo.mancala.domain.InvalidPlayException;
 import nl.sogyo.mancala.domain.Kalaha;
 import nl.sogyo.mancala.domain.Player;
 
@@ -191,6 +192,13 @@ public class BowlTest
 			obtainedDistribution[i] = bowl.getBowlAtDistance(i).getStones();
 		
 		Assert.assertArrayEquals(expectedDistribution, obtainedDistribution);
+	}
+	
+	@Test(expected = InvalidPlayException.class)
+	public void testPlayingNotYourTurnBowlThrowsError()
+	{
+		bowl.play();
+		bowl.play();
 	}
 	
 	@After
