@@ -2,15 +2,26 @@ package nl.sogyo.mancala.domain;
 
 public class Bowl extends BaseBowl 
 {
-	public Bowl(BaseBowl neighbour, Player player) 
+	public Bowl(int stones, Player player)
 	{
-		super(4, neighbour, player);
+		super(stones, player);
+	}
+	
+	public Bowl(Player player) 
+	{
+		this(4, player);
+	}
+	
+	protected Bowl(Player player, int bowlsLeft)
+	{
+		super(4, player, bowlsLeft);
 	}
 
 	public void play()
 	{
-		neighbour.pass(this.stones);
+		int stonesToPass = this.stones;
 		this.stones = 0;
+		neighbour.pass(stonesToPass);
 	}
 	
 	@Override

@@ -2,15 +2,23 @@ package nl.sogyo.mancala.domain;
 
 public class Kalaha extends BaseBowl 
 {
-	public Kalaha(BaseBowl neighbour, Player player) 
+	public Kalaha(Player player) 
 	{
-		super(0, neighbour, player);
+		super(0, player);
+	}
+	
+	protected Kalaha(Player player, int bowlsLeft)
+	{
+		super(0, player, bowlsLeft);
 	}
 
 	@Override
 	protected void pass(int stones)
 	{
-		//TODO Implement
+		if(player.getIsMyTurn())
+			super.pass(stones);
+		else
+			neighbour.pass(stones);
 	}
 	
 	@Override
