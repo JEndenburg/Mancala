@@ -142,6 +142,57 @@ public class BowlTest
 		Assert.assertArrayEquals(expectedDistribution, obtainedDistribution);
 	}
 	
+	@Test
+	public void testIfBowlEmptyWhenNotEmpty()
+	{
+		Assert.assertEquals(false, bowl.isEmpty());
+	}
+	
+	@Test
+	public void testIfNoStonesAfterEndingInOwnEmptyBowl()
+	{
+		Bowl endingBowl = (Bowl)bowl.getBowlAtDistance(4);
+		endingBowl.play();
+		player1.switchTurn();
+		bowl.play();
+		
+		Assert.assertEquals(0, endingBowl.getStones());
+	}
+	
+	@Test
+	public void testIfCanGetOppositeBowl()
+	{
+		BaseBowl[] expectedBowls = 
+			{
+				bowl.getBowlAtDistance(12), bowl.getBowlAtDistance(11), bowl.getBowlAtDistance(10),
+				bowl.getBowlAtDistance(9), bowl.getBowlAtDistance(8), bowl.getBowlAtDistance(7),
+				bowl.getBowlAtDistance(6), bowl.getBowlAtDistance(5), bowl.getBowlAtDistance(4),
+				bowl.getBowlAtDistance(3), bowl.getBowlAtDistance(2), bowl.getBowlAtDistance(1),
+				bowl.getBowlAtDistance(0)
+			};
+		BaseBowl[] obtainedBowls = new BaseBowl[expectedBowls.length];
+		for(int i = 0; i < expectedBowls.length; i++)
+			obtainedBowls[i] = bowl.getBowlAtDistance(i).getOpposite();
+		
+		Assert.assertArrayEquals(expectedBowls, obtainedBowls);
+	}
+	
+//	@Test
+//	public void testIfStolenStones()
+//	{
+//		((Bowl)bowl.getBowlAtDistance(4)).play();
+//		player1.switchTurn();
+//		bowl.play();
+//		
+//		int[] expectedDistribution = {0, 5, 5, 5, 0, 5, 7, 5, 0, 4};
+//		int[] obtainedDistribution = new int[expectedDistribution.length];
+//		
+//		for(int i = 0; i < expectedDistribution.length; i++)
+//			obtainedDistribution[i] = bowl.getBowlAtDistance(i).getStones();
+//		
+//		Assert.assertArrayEquals(expectedDistribution, obtainedDistribution);
+//	}
+	
 	@After
 	public void tearDown()
 	{

@@ -40,4 +40,10 @@ public class Kalaha extends BaseBowl
 		//TODO Implement
 		return null;
 	}
+
+	@Override
+	public BaseBowl getOpposite() 
+	{
+		return this;
+	}
 }

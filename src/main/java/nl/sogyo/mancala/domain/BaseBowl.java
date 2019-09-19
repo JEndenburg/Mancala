@@ -43,11 +43,10 @@ public abstract class BaseBowl
 	
 	protected Kalaha getKalaha()
 	{
-		//TODO Implement
-		return null;
+		return neighbour.getKalaha();
 	}
 	
-	private boolean isEmpty()
+	public boolean isEmpty()
 	{
 		return stones == 0;
 	}
@@ -76,4 +75,6 @@ public abstract class BaseBowl
 		//TODO Implement
 		return false;
 	}
+	
+	public abstract BaseBowl getOpposite();
 }
