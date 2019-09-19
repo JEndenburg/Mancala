@@ -201,6 +201,14 @@ public class BowlTest
 		bowl.play();
 	}
 	
+	@Test(expected = InvalidPlayException.class)
+	public void testPlayingAnEmptyBowlThrowsError()
+	{
+		bowl.play();
+		player1.switchTurn();
+		bowl.play();
+	}
+	
 	@After
 	public void tearDown()
 	{

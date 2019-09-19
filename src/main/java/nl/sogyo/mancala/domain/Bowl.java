@@ -21,6 +21,8 @@ public class Bowl extends BaseBowl
 	{
 		if(!player.getIsMyTurn())
 			throw new InvalidPlayException("You can't play when it's not your turn!");
+		if(isEmpty())
+			throw new InvalidPlayException("You can't play an empty bowl!");
 		
 		int stonesToPass = this.stones;
 		this.stones = 0;
