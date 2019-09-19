@@ -2,13 +2,20 @@ package nl.sogyo.mancala.domain;
 
 public class Player 
 {
-	private boolean isMyTurn = false;
+	private boolean isMyTurn = true;
 	private Player opponent;
 	
-	public Player(Player opponent)
+	public Player getOpponent() { return opponent; }
+	
+	public Player(boolean isStarter)
 	{
-		this.opponent = opponent;
+		this.opponent = new Player();
+		this.opponent.isMyTurn = !isStarter;
+		this.opponent.opponent = this;
+		this.isMyTurn = isStarter;
 	}
+	
+	private Player(){}
 	
 	public boolean getIsMyTurn()
 	{
@@ -17,6 +24,7 @@ public class Player
 	
 	public void switchTurn()
 	{
-		//TODO Implement
+		isMyTurn = !isMyTurn;
+		opponent.isMyTurn = !isMyTurn;
 	}
 }
