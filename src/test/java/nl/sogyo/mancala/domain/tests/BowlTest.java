@@ -177,21 +177,21 @@ public class BowlTest
 		Assert.assertArrayEquals(expectedBowls, obtainedBowls);
 	}
 	
-//	@Test
-//	public void testIfStolenStones()
-//	{
-//		((Bowl)bowl.getBowlAtDistance(4)).play();
-//		player1.switchTurn();
-//		bowl.play();
-//		
-//		int[] expectedDistribution = {0, 5, 5, 5, 0, 5, 7, 5, 0, 4};
-//		int[] obtainedDistribution = new int[expectedDistribution.length];
-//		
-//		for(int i = 0; i < expectedDistribution.length; i++)
-//			obtainedDistribution[i] = bowl.getBowlAtDistance(i).getStones();
-//		
-//		Assert.assertArrayEquals(expectedDistribution, obtainedDistribution);
-//	}
+	@Test
+	public void testIfHasStolenStones()
+	{
+		((Bowl)bowl.getBowlAtDistance(4)).play();
+		player1.switchTurn();
+		bowl.play();
+		
+		int[] expectedDistribution = {0, 5, 5, 5, 0, 5, 7, 5, 0, 4};
+		int[] obtainedDistribution = new int[expectedDistribution.length];
+		
+		for(int i = 0; i < expectedDistribution.length; i++)
+			obtainedDistribution[i] = bowl.getBowlAtDistance(i).getStones();
+		
+		Assert.assertArrayEquals(expectedDistribution, obtainedDistribution);
+	}
 	
 	@After
 	public void tearDown()

@@ -34,8 +34,9 @@ public class Bowl extends BaseBowl
 			if(startedAsEmpty)
 			{
 				Kalaha nearestKalaha = getKalaha();
-				nearestKalaha.stones = this.stones;
-				this.stones = 0;
+				Bowl oppositeBowl = (Bowl)getOpposite();
+				nearestKalaha.stones += this.stones + oppositeBowl.stones;
+				oppositeBowl.stones = this.stones = 0;
 			}
 			player.switchTurn();
 		}
