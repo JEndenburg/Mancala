@@ -2,9 +2,9 @@ package nl.sogyo.mancala.domain;
 
 public class Kalaha extends BaseBowl 
 {
-	public Kalaha(BaseBowl neighbour) 
+	public Kalaha(BaseBowl neighbour, Player player) 
 	{
-		super(0, neighbour);
+		super(0, neighbour, player);
 	}
 
 	@Override

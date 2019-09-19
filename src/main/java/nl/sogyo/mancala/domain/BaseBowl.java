@@ -8,10 +8,11 @@ public abstract class BaseBowl
 	
 	public int getStones() { return stones; }
 	
-	public BaseBowl(int stones, BaseBowl neighbour)
+	public BaseBowl(int stones, BaseBowl neighbour, Player player)
 	{
 		this.stones = stones;
 		this.neighbour = neighbour;
+		this.player = player;
 	}
 	
 	protected void pass(int stones)

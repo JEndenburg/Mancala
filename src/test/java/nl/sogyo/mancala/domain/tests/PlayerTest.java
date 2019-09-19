@@ -40,7 +40,7 @@ public class PlayerTest
 	@Test
 	public void testIfPlayerTwoDoesNotHaveTurnAfterConstruction()
 	{
-		Assert.assertNotEquals(true, player2.getIsMyTurn());
+		Assert.assertEquals(false, player2.getIsMyTurn());
 	}
 	
 	@Test
@@ -55,5 +55,11 @@ public class PlayerTest
 	{
 		player1.switchTurn();
 		Assert.assertEquals(true, player2.getIsMyTurn());
+	}
+	
+	@After
+	public void tearDown()
+	{
+		player1 = player2 = null;
 	}
 }

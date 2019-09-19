@@ -11,16 +11,18 @@ public class BowlTest
 {
 	private Bowl bowl;
 	Bowl[] neighbourBowls;
+	Player player1;
 	
 	@Before
 	public void setup()
 	{
+		player1 = new Player(true);
 		neighbourBowls = new Bowl[5];
-		neighbourBowls[neighbourBowls.length - 1] = new Bowl(null);
+		neighbourBowls[neighbourBowls.length - 1] = new Bowl(null, player1);
 		for(int i = neighbourBowls.length - 2; i >= 0; i--)
-			neighbourBowls[i] = new Bowl(neighbourBowls[i + 1]);
+			neighbourBowls[i] = new Bowl(neighbourBowls[i + 1], player1);
 		
-		bowl = new Bowl(neighbourBowls[0]);
+		bowl = new Bowl(neighbourBowls[0], player1);
 	}
 	
 //	private BaseBowl[] createBoard()
@@ -78,8 +80,17 @@ public class BowlTest
 		Assert.assertEquals(neighbourBowls[4].getStones(), 4);
 	}
 	
+	@Test
+	public void testPlayerTurnSwitchedAfterPlayEndsInRegularNonEmptyBowl()
+	{
+		bowl.play();
+		Assert.assertEquals(false, player1.getIsMyTurn());
+	}
+	
 	@After
 	public void tearDown()
 	{
+		bowl = null;
+		neighbourBowls = null;
 	}
 }
