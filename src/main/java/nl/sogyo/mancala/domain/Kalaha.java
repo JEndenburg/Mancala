@@ -28,10 +28,9 @@ public class Kalaha extends BaseBowl
 	}
 	
 	@Override
-	public boolean isGameOver()
+	protected boolean isGameOver(int count)
 	{
-		//TODO Implement
-		return false;
+		return neighbour.isGameOver(count);
 	}
 	
 	@Override

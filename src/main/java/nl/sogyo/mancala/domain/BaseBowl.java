@@ -70,10 +70,11 @@ public abstract class BaseBowl
 		return null;
 	}
 	
+	protected abstract boolean isGameOver(int count);
+	
 	public boolean isGameOver()
 	{
-		//TODO Implement
-		return false;
+		return isGameOver(KALAHA_INTERVAL - 2);
 	}
 	
 	public abstract BaseBowl getOpposite();

@@ -209,6 +209,26 @@ public class BowlTest
 		bowl.play();
 	}
 	
+	@Test
+	public void testIsNotGameOverWhenBowlsHaveStones()
+	{
+		bowl.play();
+		Assert.assertEquals(false, bowl.isGameOver());
+	}
+	
+	@Test
+	public void testIsGameOverWhenBowlsHaveNoStones()
+	{
+		for(int i = 0; i < 6; i++)
+		{
+			((Bowl)bowl.getBowlAtDistance(i)).play();
+			if(i != 1)
+				player1.switchTurn();
+		}
+		
+		Assert.assertEquals(true, bowl.isGameOver());
+	}
+	
 	@After
 	public void tearDown()
 	{

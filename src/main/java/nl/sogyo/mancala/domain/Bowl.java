@@ -52,4 +52,18 @@ public class Bowl extends BaseBowl
 	{
 		return (Bowl)neighbour.getOpposite().neighbour;
 	}
+	
+	@Override
+	protected boolean isGameOver(int count)
+	{
+		if(player.getIsMyTurn())
+		{
+			if(isEmpty())
+				return count <= 0 ? true : neighbour.isGameOver(count - 1);
+			else
+				return false;
+		}
+		else
+			return neighbour.isGameOver(count);
+	}
 }
