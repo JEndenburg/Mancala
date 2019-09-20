@@ -32,13 +32,6 @@ public class Kalaha extends BaseBowl
 	{
 		return neighbour.isGameOver(count);
 	}
-	
-	@Override
-	public Player getWinner()
-	{
-		//TODO Implement
-		return null;
-	}
 
 	@Override
 	public BaseBowl getOpposite() 

@@ -66,8 +66,10 @@ public abstract class BaseBowl
 	
 	public Player getWinner()
 	{
-		//TODO Implement
-		return null;
+		if(player.getIsMyTurn())
+			return player;
+		else
+			return neighbour.getWinner();
 	}
 	
 	protected abstract boolean isGameOver(int count);

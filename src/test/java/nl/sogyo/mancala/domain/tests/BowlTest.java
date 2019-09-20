@@ -229,6 +229,20 @@ public class BowlTest
 		Assert.assertEquals(true, bowl.isGameOver());
 	}
 	
+	@Test
+	public void getWinnerIfPlayerOneWins()
+	{
+		Assert.assertEquals(player1, bowl.getWinner());
+	}
+	
+	@Test
+	public void getWinnderIfPlayerTwoWins()
+	{
+		Player player2 = player1.getOpponent();
+		player1.switchTurn();
+		Assert.assertEquals(player2, bowl.getWinner());
+	}
+	
 	@After
 	public void tearDown()
 	{
