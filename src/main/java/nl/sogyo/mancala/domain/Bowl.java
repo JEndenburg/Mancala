@@ -32,19 +32,20 @@ public class Bowl extends BaseBowl
 	@Override
 	protected void pass(int stones)
 	{
-		boolean startedAsEmpty = isEmpty();
 		super.pass(stones);
-		if(stones == 1)
+	}
+	
+	@Override
+	protected void onGetLastStone()
+	{
+		if(stones == 1 && player.getIsMyTurn())
 		{
-			if(startedAsEmpty)
-			{
-				Kalaha nearestKalaha = getKalaha();
-				Bowl oppositeBowl = (Bowl)getOpposite();
-				nearestKalaha.stones += this.stones + oppositeBowl.stones;
-				oppositeBowl.stones = this.stones = 0;
-			}
-			player.switchTurn();
+			Kalaha nearestKalaha = getKalaha();
+			Bowl oppositeBowl = (Bowl)getOpposite();
+			nearestKalaha.stones += this.stones + oppositeBowl.stones;
+			oppositeBowl.stones = this.stones = 0;
 		}
+		player.switchTurn();
 	}
 
 	@Override

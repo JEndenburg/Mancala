@@ -4,6 +4,7 @@ public abstract class BaseBowl
 {
 	public static final int BOWL_COUNT = 14;
 	public static final int KALAHA_INTERVAL = 7;
+	public static final int REGULAR_BOWLS_PER_SIDE = 6;
 	
 	protected int stones = 4;
 	protected BaseBowl neighbour;
@@ -39,6 +40,13 @@ public abstract class BaseBowl
 		this.stones++;
 		if(stones > 1)
 			neighbour.pass(stones - 1);
+		else
+			onGetLastStone();
+	}
+	
+	protected void onGetLastStone()
+	{
+		
 	}
 	
 	protected Kalaha getKalaha()
@@ -76,7 +84,7 @@ public abstract class BaseBowl
 	
 	public boolean isGameOver()
 	{
-		return isGameOver(KALAHA_INTERVAL - 2);
+		return isGameOver(REGULAR_BOWLS_PER_SIDE - 1);
 	}
 	
 	public abstract BaseBowl getOpposite();

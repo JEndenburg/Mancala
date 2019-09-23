@@ -180,6 +180,22 @@ public class BowlTest
 		Assert.assertArrayEquals(expectedDistribution, obtainedDistribution);
 	}
 	
+	@Test
+	public void testIfHasNotStolenStonesIfEndInOppositeBowl()
+	{
+		player1.switchTurn();
+		((Bowl)bowl.getBowlAtDistance(7)).play();
+		((Bowl)bowl.getBowlAtDistance(3)).play();
+		
+		int[] expectedDistribution = {4, 4, 4, 0, 5, 5, 1, 1, 5, 5};
+		int[] obtainedDistribution = new int[expectedDistribution.length];
+		
+		for(int i = 0; i < obtainedDistribution.length; i++)
+			obtainedDistribution[i] = bowl.getBowlAtDistance(i).getStones();
+		
+		Assert.assertArrayEquals(expectedDistribution, obtainedDistribution);
+	}
+	
 	@Test(expected = InvalidPlayException.class)
 	public void testPlayingNotYourTurnBowlThrowsError()
 	{
@@ -198,21 +214,38 @@ public class BowlTest
 	@Test
 	public void testIsNotGameOverWhenBowlsHaveStones()
 	{
-		bowl.play();
-		Assert.assertEquals(false, bowl.isGameOver());
+		boolean[] expectedValues = new boolean[BaseBowl.BOWL_COUNT];
+		boolean[] obtainedValues = new boolean[BaseBowl.BOWL_COUNT];
+		
+		for(int i = 0; i < BaseBowl.BOWL_COUNT; i++)
+		{
+			expectedValues[i] = false;
+			obtainedValues[i] = bowl.getBowlAtDistance(i).isGameOver();
+		}
+		
+		Assert.assertArrayEquals(expectedValues, obtainedValues);
 	}
 	
 	@Test
 	public void testIsGameOverWhenBowlsHaveNoStones()
 	{
-		for(int i = 0; i < 6; i++)
+		for(int i = 0; i < BaseBowl.REGULAR_BOWLS_PER_SIDE; i++)
 		{
 			((Bowl)bowl.getBowlAtDistance(i)).play();
 			if(i != 1)
 				player1.switchTurn();
 		}
 		
-		Assert.assertEquals(true, bowl.isGameOver());
+		boolean[] expectedValues = new boolean[BaseBowl.BOWL_COUNT];
+		boolean[] obtainedValues = new boolean[BaseBowl.BOWL_COUNT];
+		
+		for(int i = 0; i < BaseBowl.BOWL_COUNT; i++)
+		{
+			expectedValues[i] = true;
+			obtainedValues[i] = bowl.getBowlAtDistance(i).isGameOver();
+		}
+		
+		Assert.assertArrayEquals(expectedValues, obtainedValues);
 	}
 	
 	@Test
