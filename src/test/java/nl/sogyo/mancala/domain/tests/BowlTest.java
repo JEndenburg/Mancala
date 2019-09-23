@@ -130,20 +130,6 @@ public class BowlTest
 	}
 	
 	@Test
-	public void testSkipKalahaWhenNotMyTurn()
-	{
-		bowl = new Bowl(15, player1);
-		bowl.play();
-		
-		int[] expectedDistribution = {1, 6, 6, 5, 5, 5, 1, 5, 5, 5, 5, 5, 5, 0};
-		int[] obtainedDistribution = new int[BaseBowl.BOWL_COUNT];
-		for(int i = 0; i < BaseBowl.BOWL_COUNT; i++)
-			obtainedDistribution[i] = bowl.getBowlAtDistance(i).getStones();
-		
-		Assert.assertArrayEquals(expectedDistribution, obtainedDistribution);
-	}
-	
-	@Test
 	public void testIfBowlEmptyWhenNotEmpty()
 	{
 		Assert.assertEquals(false, bowl.isEmpty());
