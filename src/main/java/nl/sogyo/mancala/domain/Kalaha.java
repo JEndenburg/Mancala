@@ -2,11 +2,6 @@ package nl.sogyo.mancala.domain;
 
 public class Kalaha extends BaseBowl 
 {
-	public Kalaha(Player player) 
-	{
-		super(0, player);
-	}
-	
 	protected Kalaha(Player player, int bowlsLeft)
 	{
 		super(0, player, bowlsLeft);

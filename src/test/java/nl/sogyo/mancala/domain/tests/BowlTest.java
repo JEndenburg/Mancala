@@ -255,7 +255,7 @@ public class BowlTest
 	}
 	
 	@Test
-	public void getWinnderIfPlayerTwoWins()
+	public void getWinnerIfPlayerTwoWins()
 	{
 		Player player2 = player1.getOpponent();
 		player1.switchTurn();

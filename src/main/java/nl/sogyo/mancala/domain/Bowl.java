@@ -30,12 +30,6 @@ public class Bowl extends BaseBowl
 	}
 	
 	@Override
-	protected void pass(int stones)
-	{
-		super.pass(stones);
-	}
-	
-	@Override
 	protected void onGetLastStone()
 	{
 		if(stones == 1 && player.getIsMyTurn())
@@ -47,7 +41,7 @@ public class Bowl extends BaseBowl
 		}
 		player.switchTurn();
 	}
-
+	
 	@Override
 	public BaseBowl getOpposite() 
 	{
